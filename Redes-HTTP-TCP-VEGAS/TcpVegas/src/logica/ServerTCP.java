@@ -41,7 +41,8 @@ public class ServerTCP {
                 // Aceptando la conexión del cliente
                 Socket clientSocket = serverSocket.accept();
 
-                ServerForm.logTXA.append("NUEVO CLIENTE CONECTADO");
+                ServerForm.logTXA.append("\n---------------------------------------------------------------------------");
+                ServerForm.logTXA.append("\nNUEVO CLIENTE CONECTADO");
                 ServerForm.logTXA.append(cmdLine + "Resiviendo solicitud");
                 buffer(clientSocket);
 
@@ -100,7 +101,7 @@ public class ServerTCP {
                 tam = getImg(data, clientSocket, forma);
                 this.nombre= "Imagen";
                 this.myAlgorithmVegas.ImplementVegas(tam);
-                
+                ServerForm.logTXA.append(cmdLine + "Enviando IMAGEN DE FONDO");
                 break;
                 
             case("GET /favicon.ico"):
@@ -115,32 +116,33 @@ public class ServerTCP {
                 tam = getImg(data2, clientSocket, forma);
                 this.nombre= "Icono";
                 this.myAlgorithmVegas.ImplementVegas(tam);
-                
+                ServerForm.logTXA.append(cmdLine + "Enviando ICON");
                 break;
                 
             //Enviamos las cabeceras de la paǵina + contenido
             case("GET / HTTP/1.1"):
                 this.nombre = "Home";
                 sendPage(Pages.getHomePage(), out);
-                
+                ServerForm.logTXA.append(cmdLine + "Enviando contenido de la PAGINA: Home.html");
                 break;
                 
             case("GET /overview"):
                 this.nombre = "Overview";
                 sendPage(Pages.getOverviewPage(), out);
-                
+                ServerForm.logTXA.append(cmdLine + "Enviando contenido de la PAGINA: Overview.html");
                 break;
                 
             case("GET /team"):
                 this.nombre = "Team";
                 sendPage(Pages.getTeamPage(), out);
-                
+                ServerForm.logTXA.append(cmdLine + "Enviando contenido de la PAGINA: Team.html");
                 break;
                 
             case("GET /saludo"):
                 tam = saludo(out);
                 this.nombre = "Saludo";
                 this.myAlgorithmVegas.ImplementVegas(tam);
+                ServerForm.logTXA.append(cmdLine + "Enviando un mensaje de saludo");
                 break;
                 
         }
@@ -157,7 +159,8 @@ public class ServerTCP {
             acumulador+=data.length();
             
         }
-        System.out.println("acumulador "+acumulador);
+        ServerForm.logTXA.append(cmdLine + "El contenido de la página tiene un tamaño de: " + acumulador);
+        ServerForm.logTXA.append(cmdLine + "IMPLEMENTANDO VEGAS");
         this.myAlgorithmVegas.ImplementVegas(acumulador);//Acumuluador para obtener el tamaño de la pagina recivida para la grafica
     }
 

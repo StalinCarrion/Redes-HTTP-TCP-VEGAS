@@ -18,16 +18,11 @@ public class Vegas {
     int alpha; //Umbral inferior para la ventana
     int gamma = 10; //Valor inferior
     
-    int umbralUp = 0;
-    int umbralDown = 0;
-    int umbralCenter = 0;
-    
     public int windows_size = 5; //Tamaño de la ventana
     
     public int posicion_actual = 0; //Valor inicial actual de la ventana
     public int posicion_final = 0; //Valor Final actual de la ventana
     
-    public static String proyecto = "HTTP variante TCP / VEGAS pks";
     public static String cmdLine = "\n>> ";
     
     Grafica tcpPlot;
@@ -37,7 +32,7 @@ public class Vegas {
     {
         tcpPlot = new Grafica();
         tcpPlot.plotGraph();
-        ServerForm.logTXA.append("\nEStado de Ventana");
+        ServerForm.logTXA.append("\n  *** Estado de Ventana  ***  ");
         try 
         {
             int lim_inicio = 12; //Limite >= 13

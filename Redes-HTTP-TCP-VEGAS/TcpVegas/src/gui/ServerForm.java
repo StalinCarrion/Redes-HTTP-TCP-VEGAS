@@ -60,7 +60,7 @@ public class ServerForm extends javax.swing.JFrame {
 
         jLabel3.setText("Dirección IP:");
 
-        hostTXF.setText("127.0.0.1");
+        hostTXF.setText("172.10.0.1");
 
         portTXF.setText("3000");
 
@@ -83,6 +83,7 @@ public class ServerForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        logTXA.setEditable(false);
         logTXA.setBackground(new java.awt.Color(0, 0, 0));
         logTXA.setColumns(20);
         logTXA.setFont(new java.awt.Font("NSimSun", 0, 13)); // NOI18N
